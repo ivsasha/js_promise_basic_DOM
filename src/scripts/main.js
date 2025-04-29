@@ -1,30 +1,35 @@
 'use strict';
 
 const logo = document.querySelector('.logo');
-const message = document.createElement('div');
-const errorMessage = document.createElement('div');
+const message1 = document.createElement('div');
+const errorMessage1 = document.createElement('div');
 
-message.className = 'message';
-errorMessage.className = 'error-message';
-errorMessage.className = 'message';
+message1.className = 'message';
+errorMessage1.className = 'error-message message';
+
+const message2 = document.createElement('div');
+const errorMessage2 = document.createElement('div');
+
+message2.className = 'message';
+errorMessage2.className = 'error-message message';
 
 const promise1 = new Promise((resolve, reject) => {
   logo.addEventListener('click', () => {
-    resolve('Promise was resolved!');
+    resolve('Promise 2 rejected!');
   });
 });
 
 promise1
   .then((messages) => {
-    message.innerHTML = messages;
+    message1.innerHTML = messages;
   })
   .catch((error) => {
-    errorMessage.innerHTML = error;
-    logo.appendChild(errorMessage);
+    errorMessage1.innerHTML = error;
+    logo.appendChild(errorMessage1);
   })
   .finally(() => {
-    message.innerHTML = 'Promise was resolved!';
-    logo.appendChild(message);
+    message1.innerHTML = 'Promise was resolved!';
+    logo.appendChild(message1);
   });
 
 const promise2 = new Promise((resolve, reject) => {
@@ -35,13 +40,13 @@ const promise2 = new Promise((resolve, reject) => {
 
 promise2
   .then((messages) => {
-    message.innerHTML = messages;
+    message2.innerHTML = messages;
   })
   .catch((error) => {
-    errorMessage.innerHTML = error;
-    logo.appendChild(errorMessage);
+    errorMessage2.innerHTML = error;
+    logo.appendChild(errorMessage2);
   })
   .finally(() => {
-    message.innerHTML = 'Promise was resolved!';
-    logo.appendChild(message);
+    message2.innerHTML = 'Promise was resolved!';
+    logo.appendChild(message2);
   });
